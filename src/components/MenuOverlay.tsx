@@ -102,12 +102,12 @@ export default function MenuOverlay({
   }
 
   return (
-    <div className="absolute inset-0 z-20 flex items-center justify-center bg-black/40 backdrop-blur-[2px] p-4 text-slate-800">
+    <div className="fixed inset-0 z-20 flex items-center justify-center bg-black/40 backdrop-blur-[2px] p-3 sm:p-4 text-slate-800">
       
       {/* Notebook-styled dialog container */}
       <div 
         id="menu-container"
-        className="relative w-full max-w-md bg-[#faf8f2] border-4 border-slate-800 rounded-2xl shadow-[8px_8px_0px_0px_rgba(30,41,59,1)] overflow-hidden flex flex-col max-h-[90vh]"
+        className="relative w-full max-w-md bg-[#faf8f2] border-4 border-slate-800 rounded-2xl shadow-[6px_6px_0px_0px_rgba(30,41,59,1)] sm:shadow-[8px_8px_0px_0px_rgba(30,41,59,1)] overflow-hidden flex flex-col max-h-[92vh] sm:max-h-[90vh]"
         style={{
           backgroundImage: 'radial-gradient(ellipse at top left, rgba(230,240,255,0.4) 0%, transparent 70%)'
         }}
@@ -122,16 +122,16 @@ export default function MenuOverlay({
         {/* Highlight Banner / Top spiral design */}
         <div className="h-4 bg-amber-200 border-b-2 border-slate-800 flex items-center" />
 
-        <div className="pl-9 pr-6 py-5 flex-1 flex flex-col overflow-y-auto">
+        <div className="pl-9 pr-6 py-3 sm:py-5 flex-1 flex flex-col overflow-y-auto">
           
           {/* Menu Title / Logo Area */}
-          <div className="text-center mb-5 mt-2">
-            <h1 className="text-3xl font-extrabold tracking-tight text-slate-900 select-none font-mono flex items-center justify-center gap-1">
+          <div className="text-center mb-3 sm:mb-5 mt-1 sm:mt-2">
+            <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-900 select-none font-mono flex items-center justify-center gap-1">
               <span className="text-rose-500 transform -rotate-6 inline-block">Doodle</span>
               <span className="text-sky-500 transform rotate-3 inline-block">Plane</span>
-              <span className="text-slate-800 text-2xl font-sans block mt-1">Flight</span>
+              <span className="text-slate-800 text-xl sm:text-2xl font-sans block mt-1">Flight</span>
             </h1>
-            <p className="text-xs text-slate-500 font-mono italic mt-1">"Flying through drawing clouds!"</p>
+            <p className="text-[10px] sm:text-xs text-slate-500 font-mono italic mt-0.5">"Flying through drawing clouds!"</p>
           </div>
 
           {/* GAME OVER CARD VIEW */}
@@ -184,28 +184,28 @@ export default function MenuOverlay({
           )}
 
           {/* TAB NAVIGATION PANEL */}
-          <div className="flex border-b-2 border-slate-850 justify-between text-xs font-bold font-mono mb-4 text-slate-500 select-none">
+          <div className="flex border-b-2 border-slate-850 justify-between text-[11px] sm:text-xs font-bold font-mono mb-2.5 sm:mb-4 text-slate-500 select-none">
             <button 
               onClick={() => { setActiveTab('main'); setHasSavedScore(false); }}
-              className={`pb-1 px-1 transition border-b-2 -mb-[2px] ${activeTab === 'main' ? 'text-slate-900 border-rose-500' : 'border-transparent hover:text-slate-800'}`}
+              className={`pb-1 px-0.5 transition border-b-2 -mb-[2px] ${activeTab === 'main' ? 'text-slate-900 border-rose-500' : 'border-transparent hover:text-slate-800'}`}
             >
               PLAY
             </button>
             <button 
               onClick={() => setActiveTab('settings')}
-              className={`pb-1 px-1 transition border-b-2 -mb-[2px] ${activeTab === 'settings' ? 'text-slate-900 border-sky-500' : 'border-transparent hover:text-slate-800'}`}
+              className={`pb-1 px-0.5 transition border-b-2 -mb-[2px] ${activeTab === 'settings' ? 'text-slate-900 border-sky-500' : 'border-transparent hover:text-slate-800'}`}
             >
               SETTINGS
             </button>
             <button 
               onClick={() => setActiveTab('scores')}
-              className={`pb-1 px-1 transition border-b-2 -mb-[2px] ${activeTab === 'scores' ? 'text-slate-900 border-amber-500' : 'border-transparent hover:text-slate-800'}`}
+              className={`pb-1 px-0.5 transition border-b-2 -mb-[2px] ${activeTab === 'scores' ? 'text-slate-900 border-amber-500' : 'border-transparent hover:text-slate-800'}`}
             >
               LEADERBOARD
             </button>
             <button 
               onClick={() => setActiveTab('help')}
-              className={`pb-1 px-1 transition border-b-2 -mb-[2px] ${activeTab === 'help' ? 'text-slate-900 border-emerald-500' : 'border-transparent hover:text-slate-800'}`}
+              className={`pb-1 px-0.5 transition border-b-2 -mb-[2px] ${activeTab === 'help' ? 'text-slate-900 border-emerald-500' : 'border-transparent hover:text-slate-800'}`}
             >
               HELP
             </button>
@@ -214,57 +214,57 @@ export default function MenuOverlay({
           {/* TAB CONTENT: MAIN TABS */}
           {activeTab === 'main' && (
             <div className="flex-1 flex flex-col justify-between">
-              <div className="space-y-4">
+              <div className="space-y-2 sm:space-y-4">
                 {/* Visual sketch promo */}
-                <div className="border border-slate-300 rounded-xl p-3 bg-white shadow-xs flex items-center gap-3">
-                  <div className="p-2 bg-gradient-to-br from-rose-100 to-amber-100 rounded-lg text-slate-700 shadow-xs">
-                    <Plane className="w-8 h-8 animate-bounce flex-shrink-0" />
+                <div className="border border-slate-300 rounded-xl p-2 sm:p-3 bg-white shadow-xs flex items-center gap-3">
+                  <div className="p-1.5 sm:p-2 bg-gradient-to-br from-rose-100 to-amber-100 rounded-lg text-slate-700 shadow-xs">
+                    <Plane className="w-6 h-6 sm:w-8 sm:h-8 animate-bounce flex-shrink-0" />
                   </div>
                   <div>
-                    <h3 className="text-sm font-bold text-slate-800">10-Year-Old's Dream!</h3>
-                    <p className="text-xs text-slate-500">Pilot standard code 3 - flying through clouds and shooting pencils to erase black clouds!</p>
+                    <h3 className="text-xs sm:text-sm font-bold text-slate-800">10-Year-Old's Dream!</h3>
+                    <p className="text-[10px] sm:text-xs text-slate-500 leading-tight">Pilot standard code 3 - flying through clouds and shooting pencils to erase black clouds!</p>
                   </div>
                 </div>
 
                 {/* Quick settings check */}
-                <div className="text-xs bg-slate-100 p-2 rounded-lg border border-slate-200 flex items-center justify-between font-mono">
+                <div className="text-[11px] sm:text-xs bg-slate-100 p-1.5 sm:p-2 rounded-lg border border-slate-200 flex items-center justify-between font-mono">
                   <span>Difficulty: <strong className="text-sky-600 capitalize">{settings.difficulty}</strong></span>
                   <span>Sound: <strong className={settings.soundEnabled ? "text-emerald-600" : "text-rose-500"}>{settings.soundEnabled ? "ON" : "OFF"}</strong></span>
                 </div>
               </div>
 
               {/* ACTION BUTTON START / RESTART */}
-              <div className="mt-8 space-y-2">
+              <div className="mt-4 sm:mt-8 space-y-2">
                 {gameState === 'MENU' ? (
                   <button
                     onClick={onStartGame}
-                    className="w-full bg-[#fed330] hover:bg-[#f7b731] active:translate-y-0.5 select-none border-2 border-slate-800 rounded-xl py-3 px-4 font-bold text-lg text-slate-900 shadow-[4px_4px_0px_0px_rgba(15,23,42,1)] flex items-center justify-center gap-2 transition"
+                    className="w-full bg-[#fed330] hover:bg-[#f7b731] active:translate-y-0.5 select-none border-2 border-slate-800 rounded-xl py-2 sm:py-3 px-4 font-bold text-sm sm:text-lg text-slate-900 shadow-[3px_3px_0px_0px_rgba(15,23,42,1)] sm:shadow-[4px_4px_0px_0px_rgba(15,23,42,1)] flex items-center justify-center gap-2 transition"
                   >
-                    <Play className="w-5 h-5 fill-slate-900" /> START FLYING
+                    <Play className="w-4 h-4 sm:w-5 sm:h-5 fill-slate-900" /> START FLYING
                   </button>
                 ) : (
                   <button
                     onClick={onResetGame}
-                    className="w-full bg-[#fed330] hover:bg-[#f7b731] active:translate-y-0.5 select-none border-2 border-slate-800 rounded-xl py-3 px-4 font-bold text-lg text-slate-900 shadow-[4px_4px_0px_0px_rgba(15,23,42,1)] flex items-center justify-center gap-2 transition"
+                    className="w-full bg-[#fed330] hover:bg-[#f7b731] active:translate-y-0.5 select-none border-2 border-slate-800 rounded-xl py-2 sm:py-3 px-4 font-bold text-sm sm:text-lg text-slate-900 shadow-[3px_3px_0px_0px_rgba(15,23,42,1)] sm:shadow-[4px_4px_0px_0px_rgba(15,23,42,1)] flex items-center justify-center gap-2 transition"
                   >
-                    <RotateCcw className="w-5 h-5" /> RESTART GAME
+                    <RotateCcw className="w-4 h-4 sm:w-5 sm:h-5" /> RESTART GAME
                   </button>
                 )}
 
                 <div className="flex gap-2">
                   <button
                     onClick={onToggleSound}
-                    className="flex-1 bg-white hover:bg-slate-50 border-2 border-slate-800 rounded-xl py-2 px-3 text-sm font-semibold flex items-center justify-center gap-1.5 transition"
+                    className="flex-1 bg-white hover:bg-slate-50 border-2 border-slate-800 rounded-xl py-1.5 sm:py-2 px-3 text-xs sm:text-sm font-semibold flex items-center justify-center gap-1.5 transition"
                   >
-                    {settings.soundEnabled ? <Volume2 className="w-4 h-4 text-emerald-600" /> : <VolumeX className="w-4 h-4 text-rose-500" />}
-                    {settings.soundEnabled ? "Mute sound" : "Unmute sound"}
+                    {settings.soundEnabled ? <Volume2 className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-emerald-600" /> : <VolumeX className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-rose-500" />}
+                    {settings.soundEnabled ? "Mute" : "Unmute"}
                   </button>
 
                   <button
                     onClick={() => setActiveTab('help')}
-                    className="flex-1 bg-white hover:bg-slate-50 border-2 border-slate-800 rounded-xl py-2 px-3 text-sm font-semibold flex items-center justify-center gap-1.5 transition"
+                    className="flex-1 bg-white hover:bg-slate-50 border-2 border-slate-800 rounded-xl py-1.5 sm:py-2 px-3 text-xs sm:text-sm font-semibold flex items-center justify-center gap-1.5 transition"
                   >
-                    <HelpCircle className="w-4 h-4 text-blue-500" />
+                    <HelpCircle className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-blue-500" />
                     How to play
                   </button>
                 </div>
