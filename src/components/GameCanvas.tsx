@@ -778,17 +778,17 @@ export default function GameCanvas({
   return (
     <div 
       ref={containerRef}
-      className="relative w-full max-w-4xl mx-auto flex flex-col items-center justify-center p-1 sm:p-2 select-none"
+      className="relative w-full max-w-4xl mx-auto flex flex-col items-center justify-center p-1 select-none"
     >
       {/* MOBILE GAME HUD DISPLAY BAR */}
-      <div className="w-full flex justify-between items-center bg-[#faf8f2] border-2 border-slate-800 rounded-xl px-4 py-2.5 mb-2 font-mono shadow-[3px_3px_0px_0px_rgba(15,23,42,1)] select-none">
+      <div className="w-full flex justify-between items-center bg-[#faf8f2] border-2 border-slate-800 rounded-xl px-2.5 py-1.5 sm:px-4 sm:py-2 mb-1.5 font-mono shadow-[3px_3px_0px_0px_rgba(15,23,42,1)] select-none">
         {/* Lives / Heart fuel display */}
         <div id="hud-lives" className="flex items-center gap-1">
-          <span className="text-[10px] text-slate-400 uppercase font-semibold mr-1.5 flex items-center gap-0.5"><Target className="w-3 h-3 text-emerald-500" /> Crew</span>
+          <span className="text-[9px] sm:text-[10px] text-slate-400 uppercase font-semibold mr-1 sm:mr-1.5 flex items-center gap-0.5"><Target className="w-3 h-3 text-emerald-500" /> Crew</span>
           {[...Array(settings.difficulty === 'easy' ? 4 : settings.difficulty === 'hard' ? 2 : 3)].map((_, i) => (
             <Heart 
               key={i} 
-              className={`w-5 h-5 transition-transform ${
+              className={`w-4 h-4 sm:w-5 sm:h-5 transition-transform ${
                 i < lives 
                   ? 'fill-rose-500 text-rose-600 scale-100' 
                   : 'text-slate-300 scale-90'
@@ -798,21 +798,21 @@ export default function GameCanvas({
         </div>
 
         {/* Dynamic score dashboard stats */}
-        <div className="flex items-center gap-4 sm:gap-6">
+        <div className="flex items-center gap-3 sm:gap-6">
           <div className="text-center">
-            <span className="block text-[9px] text-slate-400 uppercase tracking-widest font-semibold">Distance</span>
-            <span className="text-sm font-extrabold text-slate-700">{distance}m</span>
+            <span className="block text-[8px] sm:text-[9px] text-slate-400 uppercase tracking-widest font-semibold leading-none mb-0.5">Distance</span>
+            <span className="text-xs sm:text-sm font-extrabold text-slate-700 leading-none">{distance}m</span>
           </div>
 
           <div className="text-center">
-            <span className="block text-[9px] text-sky-500 uppercase tracking-widest font-semibold">Score</span>
-            <span className="text-sm font-extrabold text-slate-900">{score}</span>
+            <span className="block text-[8px] sm:text-[9px] text-sky-500 uppercase tracking-widest font-semibold leading-none mb-0.5">Score</span>
+            <span className="text-xs sm:text-sm font-extrabold text-slate-900 leading-none">{score}</span>
           </div>
 
           {settings.shootingEnabled && (
-            <div className="text-center bg-amber-50 px-2 py-0.5 border border-amber-200 rounded-md">
-              <span className="block text-[9px] text-amber-600 uppercase tracking-widest font-semibold">Ammo</span>
-              <span className="text-sm font-extrabold text-amber-700 font-mono">✎ x{bullets}</span>
+            <div className="text-center bg-amber-50 px-1.5 py-0.5 sm:px-2 border border-amber-200 rounded-md">
+              <span className="block text-[8px] sm:text-[9px] text-amber-600 uppercase tracking-widest font-semibold leading-none mb-0.5">Ammo</span>
+              <span className="text-xs sm:text-sm font-extrabold text-amber-700 font-mono leading-none">✎ x{bullets}</span>
             </div>
           )}
         </div>
@@ -823,7 +823,7 @@ export default function GameCanvas({
             onClick={() => audio.setEnabled(!audio.isEnabled())}
             className="p-1 px-1.5 bg-white border border-slate-300 rounded hover:bg-slate-50 text-slate-600 hover:text-slate-900 transition flex items-center justify-center cursor-pointer"
           >
-            {audio.isEnabled() ? <Volume2 className="w-4 h-4 text-emerald-500" /> : <VolumeX className="w-4 h-4 text-rose-400" />}
+            {audio.isEnabled() ? <Volume2 className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-emerald-500" /> : <VolumeX className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-rose-400" />}
           </button>
 
           {gameState === 'PLAYING' && (
@@ -869,7 +869,7 @@ export default function GameCanvas({
       )}
 
       {/* CANVAS DRAWING ELEMENT FRAME */}
-      <div className="relative w-full overflow-hidden border-4 border-slate-800 rounded-2xl bg-[#faf8f2] shadow-[6px_6px_0px_0px_rgba(15,23,42,1)] shrink-0">
+      <div className="relative overflow-hidden border-4 border-slate-800 rounded-2xl bg-[#faf8f2] shadow-[4px_4px_0px_0px_rgba(15,23,42,1)] shrink select-none flex items-center justify-center max-w-full max-h-[calc(100vh-100px)] max-h-[calc(100dvh-100px)] sm:max-h-[calc(100dvh-120px)] w-fit aspect-[850/480] mx-auto shadow-slate-800">
         <canvas
           ref={canvasRef}
           width={GAME_WIDTH}
@@ -878,29 +878,29 @@ export default function GameCanvas({
           onPointerMove={handlePointerMove}
           onPointerUp={handlePointerUp}
           onPointerLeave={handlePointerUp}
-          className="w-full h-auto block select-none bg-inherit cursor-pointer touch-none"
+          className="max-w-full max-h-[calc(100vh-108px)] max-h-[calc(100dvh-108px)] sm:max-h-[calc(100dvh-128px)] w-auto h-auto aspect-[850/480] block select-none bg-inherit cursor-pointer touch-none"
           style={{ imageRendering: 'pixelated' }}
         />
 
         {/* INSTRUCTIONS FLINT INTRO (DRAG TO FLY) */}
         {gameState === 'PLAYING' && stateRef.current.frameCount < 120 && (
-          <div className="absolute left-1/2 top-12 -translate-x-1/2 bg-slate-900/80 backdrop-blur-xs text-white text-xs font-semibold rounded-full py-1.5 px-4 text-center font-mono pointer-events-none animate-pulse">
+          <div className="absolute left-1/2 top-4 -translate-x-1/2 bg-slate-900/80 backdrop-blur-xs text-white text-[10px] sm:text-xs font-semibold rounded-full py-1 px-3 sm:py-1.5 sm:px-4 text-center font-mono pointer-events-none animate-pulse">
             👆 Touch & Drag Up/Down to navigate!
           </div>
         )}
 
         {/* MOBILE CONTROLS OVERLAY (VIRTUAL FLOATING BUTTON FOR SHOOTING ROCKETS) */}
         {gameState === 'PLAYING' && !isGamePaused && settings.shootingEnabled && (
-          <div className="absolute right-4 bottom-4 md:right-6 md:bottom-6 z-10 select-none">
+          <div className="absolute right-2 bottom-2 sm:right-4 sm:bottom-4 z-10 select-none">
             <button
               onPointerDown={(e) => {
                 e.preventDefault();
                 firePlaneBullet();
               }}
-              className="w-16 h-16 sm:w-20 sm:h-20 bg-rose-500 hover:bg-rose-600 active:scale-90 text-white rounded-full border-4 border-slate-800 shadow-[4px_4px_0px_0px_rgba(15,23,42,1)] flex flex-col justify-center items-center cursor-pointer outline-none select-none select-none"
+              className="w-12 h-12 sm:w-16 sm:h-16 bg-rose-500 hover:bg-rose-600 active:scale-90 text-white rounded-full border-2 sm:border-4 border-slate-800 shadow-[2px_2px_0px_0px_rgba(15,23,42,1)] sm:shadow-[4px_4px_0px_0px_rgba(15,23,42,1)] flex flex-col justify-center items-center cursor-pointer outline-none select-none"
             >
-              <Zap className="w-5 h-5 sm:w-6 sm:h-6 fill-white text-rose-100 animate-pulse pointer-events-none" />
-              <span className="text-[10px] sm:text-xs font-black font-mono tracking-widest pointer-events-none">BLAST</span>
+              <Zap className="w-4 h-4 sm:w-5 sm:h-5 fill-white text-rose-100 animate-pulse pointer-events-none" />
+              <span className="text-[8px] sm:text-[10px] font-black font-mono tracking-widest pointer-events-none leading-none">BLAST</span>
             </button>
           </div>
         )}
