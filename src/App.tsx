@@ -77,7 +77,7 @@ export default function App() {
 
   return (
     <div 
-      className="min-h-screen w-full bg-[#1e272e] flex flex-col items-center justify-center p-3 md:p-6"
+      className="h-[100dvh] w-full bg-[#1e272e] flex flex-col items-center justify-center p-1.5 sm:p-4 overflow-hidden select-none"
       style={{
         // Give it an authentic student desk dark vinyl laminate or leather pad background
         backgroundColor: '#1c242c',
@@ -128,9 +128,9 @@ export default function App() {
       </div>
 
       {/* FOOTER DESK CREDITS */}
-      <div className="mt-4 text-center select-none opacity-50 text-slate-400 font-mono text-[10px] max-w-md px-4 flex flex-col gap-1">
+      <div className="mt-2 sm:mt-4 text-center select-none opacity-40 text-slate-400 font-mono text-[9px] sm:text-[10px] max-w-sm px-4 flex flex-col gap-0.5 hidden sm:block">
         <p className="flex items-center justify-center gap-1">
-          <span>✎ Handcrafted after drawing concepts by standard 10-year-old child.</span>
+          <span>✎ Handcrafted child drawing concept code.</span>
         </p>
         <p>Press <kbd className="bg-slate-800 text-slate-300 font-bold px-1 py-0.5 rounded text-[9px] border border-slate-700">Space</kbd> or tap bottom-right circle to activate the Pencil Blaster!</p>
       </div>
